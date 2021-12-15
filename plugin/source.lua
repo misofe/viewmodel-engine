@@ -75,7 +75,7 @@ Button.Click:Connect(function()
 		B1_CloseSt = not B1_CloseSt
 		B1_Gui = ungroup(IS:LoadAsset(8256031188))
 		B1_Gui.Parent = game.CoreGui
-		B1_Gui["Frame"]["Select_Handle"].MouseButton1Click:Connect(function()
+		B1_Gui["mainframe"]["Select_Handle"].MouseButton1Click:Connect(function()
 			tool = handle:FindFirstAncestorOfClass("Tool")
 			model = handle:FindFirstAncestorOfClass("Model")
 			assert(tool and model, "Ancestor of the Handle instance must be within a tool or a Model")
