@@ -28,7 +28,7 @@ Instance2 = require(ungroup(Instance2))
 --
 function fsel()
 	local selections = SEL:Get()
-	return 
+	return selections[1]
 end
 function swarn(s)
 	warn(s.Name.." successfully appended ".."- "..s.ClassName, s.LinkedSource)
@@ -62,7 +62,7 @@ function rcheck()
 	end
 end
 --
-local B1_CloseSt = true
+local B1_CloseSt = false
 local B1_Gui
 Button1.Click:Connect(function()
 	rcheck()
@@ -76,12 +76,12 @@ Button.Click:Connect(function()
 		B1_Gui = ungroup(IS:LoadAsset(8256031188))
 		B1_Gui.Parent = game.CoreGui
 		B1_Gui["mainframe"]["Select_Handle"].MouseButton1Click:Connect(function()
-			tool = handle:FindFirstAncestorOfClass("Tool")
-			model = handle:FindFirstAncestorOfClass("Model")
+			tool = fsel():FindFirstAncestorOfClass("Tool")
+			model = fsel():FindFirstAncestorOfClass("Model")
 			assert(tool and model, "Ancestor of the Handle instance must be within a tool or a Model")
 			handle = SEL:Get()[1]
 			rcheck()
-			B1_Gui["Frame"]["Select_Handle"]["check_box"].Visible = true
+			B1_Gui["mainframe"]["Select_Handle"]["check_box"].Visible = true
 			local newfolder = Instance.new("Folder")
 			if RS:FindFirstChild("Library")["GunEngine"]["Animations"]:FindFirstChild(tool.Name) then 
 				warn("There are two view model tools set with the same names, consider changing it")
