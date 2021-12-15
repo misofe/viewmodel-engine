@@ -13,15 +13,7 @@ local Button = toolbar:CreateButton("Load View Model", "Loads the view model cha
 Button.ClickableWhenViewportHidden = true
 local Button1 = toolbar:CreateButton( "Install", "Installs the VwMl engine into the game", "http://www.roblox.com/asset/?id=8249779339")
 Button1.ClickableWhenViewportHidden = true
-local Instance2 = require(script.colbert_instance2)
 --
-function fsel()
-	local selections = SEL:Get()
-	return 
-end
-function swarn(s)
-	warn(s.Name.." successfully appended ".."- "..s.ClassName, s.LinkedSource)
-end
 function ungroup(model)
 	local mainfirst = model:GetChildren()[1]
 	for _, c in pairs(model:GetChildren()) do
@@ -30,8 +22,20 @@ function ungroup(model)
 	model:Destroy()
 	return mainfirst
 end
+local Instance2 = IS:LoadAsset(8256044765)
+Instance2.Parent = script
+Instance2 = require(ungroup(Instance2))
+--
+function fsel()
+	local selections = SEL:Get()
+	return 
+end
+function swarn(s)
+	warn(s.Name.." successfully appended ".."- "..s.ClassName, s.LinkedSource)
+end
+
 function rcheck()
-	if RS:FindFirstChild("lib") and RS:FindFirstChild("lib")["GunEngine"]["vm"] then 
+	if RS:FindFirstChild("Library") and RS:FindFirstChild("Library")["GunEngine"]["vm"] then -- 
 		if RS:FindFirstChild("ClientModule") and RS:FindFirstChild("ClientModule"):FindFirstChild("util") then
 			warn("VM : : Installing Finished")
 		else 
@@ -45,7 +49,7 @@ function rcheck()
 		local lib = IS:LoadAsset(8255947059)
 		lib.Parent = RS
 		lib = ungroup(lib)
-		lib["Animations"]["AK47"]:Destroy()
+		lib["GunEngine"]["Animations"]["AK47"]:Destroy()
 		warn("VM : : Installing Library")
 		if RS:FindFirstChild("ClientModule") and RS:FindFirstChild("ClientModule"):FindFirstChild("util") then
 			warn("VM : : Installing Finished")
